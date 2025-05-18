@@ -48,7 +48,7 @@ const Root = () => {
   }, []);
 
   const handleLogin = () => {
-    localStorage.setItem("codemuse_user","true"); // demo user email placeholder
+    localStorage.setItem("codemuse_user","vv2644665@gmail.com"); // demo user email placeholder
     setIsLoggedIn(true);
     setShowLogin(false);
     setShowSignup(false);
