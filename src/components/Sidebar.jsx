@@ -9,7 +9,7 @@ const Sidebar = () => {
   }
 
   return (
-    <aside className=" md:w-64 bg-white border-r p-4 overflow-y-auto flex flex-col dark:bg-gray-800 dark:text-white">
+    <aside className=" md:w-40 bg-white border-r p-4 overflow-y-auto flex flex-col dark:bg-gray-800 dark:text-white">
       <h2 className="text-lg font-semibold mb-4">Query History</h2>
       <ul className="space-y-2 text-sm">
         {history.length === 0 ? (
