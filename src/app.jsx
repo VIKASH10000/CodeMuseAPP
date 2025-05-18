@@ -16,7 +16,7 @@ const App = ({ onLogout }) => {
   const { loading } = useAppContext();
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white flex flex-col transition-colors duration-300">
+    <div className="md:flex-row min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white flex flex-col transition-colors duration-300">
       <Header onLogout={onLogout} />
       <div className="flex flex-1">
         <Sidebar />
