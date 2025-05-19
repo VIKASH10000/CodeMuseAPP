@@ -1,6 +1,6 @@
 import ThemeToggler from "./ThemeToggler";
 
-const Header = ({ onLogout }) => {
+const Header = ({ onLogout, isGuest }) => {
   return (
     <header className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white px-6 py-4 shadow-md flex justify-between items-center">
       {/* Left side: Title and subtitle */}
@@ -11,14 +11,18 @@ const Header = ({ onLogout }) => {
         </span>
       </div>
 
-      {/* Right side: Theme toggler + Logout button */}
+      {/* Right side: Theme toggler + Logout/Login button */}
       <div className="flex items-center gap-4">
         <ThemeToggler />
         <button
           onClick={onLogout}
-          className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+          className={`${
+            isGuest 
+              ? "bg-blue-600 hover:bg-blue-700" 
+              : "bg-red-600 hover:bg-red-700"
+          } text-white px-3 py-1 rounded transition`}
         >
-          Logout
+          {isGuest ? "Login" : "Logout"}
         </button>
       </div>
     </header>
