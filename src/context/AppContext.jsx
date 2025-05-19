@@ -12,13 +12,13 @@ export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [authModalOpen, setAuthModalOpen] = useState(false);
 
-  // Load user and history from localStorage on app start
+  // Load user and history on mount
   useEffect(() => {
     const storedUser = localStorage.getItem("codemuse_user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
 
-      // Load history for user if saved
+      // Load history for user
       const storedHistory = localStorage.getItem("codemuse_history");
       if (storedHistory) setHistory(JSON.parse(storedHistory));
     } else {
@@ -26,7 +26,7 @@ export const AppProvider = ({ children }) => {
     }
   }, []);
 
-  // Save history to localStorage whenever it changes and user exists
+  // Save history when it changes and user is logged in
   useEffect(() => {
     if (user) {
       localStorage.setItem("codemuse_history", JSON.stringify(history));
@@ -39,9 +39,10 @@ export const AppProvider = ({ children }) => {
     setUser(userObj);
     setAuthModalOpen(false);
 
-    // Optionally, load history here again or clear it for fresh start
+    // Load stored history after login
     const storedHistory = localStorage.getItem("codemuse_history");
     if (storedHistory) setHistory(JSON.parse(storedHistory));
+    else setHistory([]);
   };
 
   const logout = () => {
@@ -56,7 +57,7 @@ export const AppProvider = ({ children }) => {
     if (!prompt.trim()) return;
     setLoading(true);
 
-    // Add prompt to history only if user is logged in
+    // Add prompt to history only if user logged in
     if (user) {
       setHistory((prev) => [prompt, ...prev]);
     }

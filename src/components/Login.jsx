@@ -9,15 +9,13 @@ const Login = ({ switchToSignup, onLogin }) => {
     e.preventDefault();
     setError("");
 
-    // Simple validation, can be extended
     if (!email || !password) {
       setError("Please enter email and password.");
       return;
     }
 
-    // TODO: Add real auth logic here
-    // Simulate login success for now
-    onLogin();
+    // Simulate login success
+    onLogin(email);
   };
 
   return (
@@ -25,9 +23,7 @@ const Login = ({ switchToSignup, onLogin }) => {
       <div className="bg-white dark:bg-gray-800 p-8 rounded shadow-md w-full max-w-sm">
         <h2 className="text-2xl font-bold mb-6 text-center">Login to CodeMuse</h2>
 
-        {error && (
-          <p className="text-red-600 mb-4 text-center">{error}</p>
-        )}
+        {error && <p className="text-red-600 mb-4 text-center">{error}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
